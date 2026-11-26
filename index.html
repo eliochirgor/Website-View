@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffee House Too — Breakfast, lunch & coffee in Fishtown</title>
+<meta name="description" content="Fishtown's corner cafe at York & Belgrade since 2011. Hangover hoagies, all-day breakfast, espresso and a tiny upstairs dining room. Open Tue–Sun.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B2440;        /* rowhouse-door navy */
+  --paper:#FBFAF6;      /* deli paper */
+  --yolk:#F2B632;       /* three eggs */
+  --roll:#C98A3E;       /* toasted long roll */
+  --teal:#5FA898;       /* diner-counter mint */
+  --cheddar:#E8892B;
+  --butter:#F7E3A1;
+  --hash:#B5793A;
+  --bacon:#9E3B2E;
+  --lettuce:#7DAA4E;
+  --muted:#5A6178;
+  --line:#DCD8CC;
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --hand:"Gochi Hand", "Comic Sans MS", cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:1.0625rem;line-height:1.55;font-variation-settings:"opsz" 14;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(251,250,246,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.brand{font-weight:800;font-size:1.25rem;letter-spacing:-.02em;text-decoration:none;font-variation-settings:"opsz" 48,"wdth" 85;white-space:nowrap}
+.brand span{color:var(--teal)}
+.nav{display:flex;gap:22px;margin-left:auto}
+.nav a{text-decoration:none;font-weight:500;font-size:.95rem}
+.nav a:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px;text-decoration-color:var(--yolk)}
+.status{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;white-space:nowrap}
+.dot{width:10px;height:10px;border-radius:50%;background:#B9B6AC;flex:none}
+.status.open .dot{background:#3FA34D;box-shadow:0 0 0 4px rgba(63,163,77,.18)}
+.call{background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;white-space:nowrap}
+.call:hover{background:#2c3961}
+@media (max-width:860px){.nav{display:none}.status{margin-left:auto}}
+@media (max-width:480px){.status .txt-long{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(40px,7vw,96px) 0 clamp(56px,8vw,110px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(3rem,8.2vw,7.4rem);line-height:.86;letter-spacing:-.045em;font-weight:800;margin:0 0 28px;font-variation-settings:"opsz" 96,"wdth" 75}
+.hero h1 .l2{display:block;color:var(--paper);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill}
+.hero .lede{font-size:clamp(1.1rem,1.6vw,1.3rem);max-width:30em;margin:0 0 32px;color:#2f3858}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:15px 24px;border-radius:999px;font-size:1rem;border:2px solid var(--ink)}
+.btn.primary{background:var(--yolk);border-color:var(--yolk);color:var(--ink)}
+.btn.primary:hover{background:#f5c252}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.est{margin-top:36px;font-family:var(--hand);font-size:1.35rem;color:var(--muted);transform:rotate(-2deg);display:inline-block}
+
+/* the hoagie: one orchestrated moment */
+.hoagie{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:0;padding-right:170px}
+.layer{position:relative;height:var(--h);background:var(--c);border-radius:var(--r,14px);margin-top:var(--o,-2px);box-shadow:inset 0 -6px 0 rgba(0,0,0,.08);
+  opacity:0;transform:translateY(-120px) rotate(var(--tilt,0deg));animation:drop .55s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:calc(var(--i) * 110ms + 150ms)}
+.layer:first-child{margin-top:0}
+.layer .tag{position:absolute;left:calc(100% + 18px);top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--hand);font-size:1.2rem;color:var(--ink);display:flex;align-items:center;gap:10px}
+.layer .tag::before{content:"";width:28px;height:2px;background:var(--ink);opacity:.5;margin-left:-46px}
+.roll-top{--c:var(--roll);--h:66px;--r:50% 50% 16px 16px / 100% 100% 16px 16px;background:radial-gradient(ellipse 6px 3px at 20% 30%,#f3dcb4 98%,transparent),radial-gradient(ellipse 6px 3px at 38% 22%,#f3dcb4 98%,transparent),radial-gradient(ellipse 6px 3px at 56% 28%,#f3dcb4 98%,transparent),radial-gradient(ellipse 6px 3px at 72% 36%,#f3dcb4 98%,transparent),radial-gradient(ellipse 6px 3px at 46% 46%,#f3dcb4 98%,transparent),radial-gradient(ellipse 6px 3px at 28% 52%,#f3dcb4 98%,transparent),radial-gradient(ellipse 6px 3px at 64% 56%,#f3dcb4 98%,transparent),var(--roll)}
+.lettuce{--c:var(--lettuce);--h:16px;--r:30px;--tilt:-1deg;margin-left:-10px;margin-right:-6px}
+.bacon{--c:var(--bacon);--h:24px;--r:8px;--tilt:1.2deg;background:repeating-linear-gradient(90deg,var(--bacon) 0 22px,#c25a45 22px 30px);margin-left:6px;margin-right:-14px}
+.hash{--c:var(--hash);--h:34px;--r:10px;background:radial-gradient(circle at 12% 40%,#d39a52 6px,transparent 7px),radial-gradient(circle at 44% 60%,#7a9b4a 4px,transparent 5px),radial-gradient(circle at 70% 35%,#c9483b 4px,transparent 5px),radial-gradient(circle at 86% 62%,#d39a52 6px,transparent 7px),var(--hash)}
+.cheddar{--c:var(--cheddar);--h:20px;--r:4px;--tilt:-.8deg;margin-left:-14px;margin-right:-18px}
+.eggs{--c:var(--paper);--h:46px;--r:26px;background:radial-gradient(ellipse 34px 22px at 22% 52%,var(--yolk) 96%,transparent),radial-gradient(ellipse 34px 22px at 50% 48%,var(--yolk) 96%,transparent),radial-gradient(ellipse 34px 22px at 78% 54%,var(--yolk) 96%,transparent),#fffdf6;box-shadow:inset 0 0 0 2px #efe6cf}
+.butter{--c:var(--butter);--h:8px;--r:6px}
+.roll-bot{--c:var(--roll);--h:40px;--r:10px 10px 50% 50% / 10px 10px 100% 100%}
+@keyframes drop{to{opacity:1;transform:translateY(0) rotate(var(--tilt,0deg))}}
+@media (prefers-reduced-motion:reduce){.layer{animation:none;opacity:1;transform:rotate(var(--tilt,0deg))}}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hoagie{max-width:460px;padding-right:140px}
+}
+@media (max-width:420px){.hoagie{padding-right:128px}.layer .tag{font-size:1.05rem;left:calc(100% + 12px)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(64px,9vw,120px) 0}
+h2{font-size:clamp(2.2rem,5vw,3.8rem);line-height:.95;letter-spacing:-.035em;font-weight:800;margin:0 0 18px;font-variation-settings:"opsz" 96,"wdth" 80}
+.intro{max-width:36em;color:#2f3858;font-size:1.15rem;margin:0}
+
+/* menu */
+.menu{background:var(--ink);color:var(--paper)}
+.menu .intro{color:#c9cede}
+.menu-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{font:inherit;font-weight:600;font-size:.95rem;background:transparent;color:var(--paper);border:2px solid #3d4870;padding:10px 18px;border-radius:999px;cursor:pointer}
+.tabs button:hover{border-color:var(--paper)}
+.tabs button[aria-selected="true"]{background:var(--yolk);border-color:var(--yolk);color:var(--ink)}
+.panel{display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
+.panel[hidden]{display:none}
+.item{padding:22px 0;border-top:1px solid #34406a}
+.item h3{margin:0 0 4px;font-size:1.3rem;font-weight:700;letter-spacing:-.01em;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.item p{margin:0;color:#c9cede;font-size:1rem;max-width:34em}
+.flag{font-family:var(--hand);font-weight:400;font-size:1.05rem;color:var(--yolk)}
+.menu-note{margin:36px 0 0;color:#9aa3c0;font-size:.95rem}
+@media (max-width:760px){.panel{grid-template-columns:1fr}}
+
+/* upstairs / house notes */
+.house .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.floors{border:2px solid var(--ink);border-radius:18px;overflow:hidden}
+.floor{padding:28px 30px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.floor + .floor{border-top:2px dashed var(--ink)}
+.floor .lvl{grid-row:span 2;font-weight:800;font-size:2.6rem;line-height:1;font-variation-settings:"opsz" 96,"wdth" 75;color:var(--teal)}
+.floor h3{margin:0;font-size:1.3rem}
+.floor p{margin:0;color:#3a4262}
+.notes{list-style:none;margin:28px 0 0;padding:0}
+.notes li{padding:16px 0;border-top:1px solid var(--line);display:flex;gap:14px}
+.notes li:last-child{border-bottom:1px solid var(--line)}
+.notes .ico{font-size:1.3rem;line-height:1.4;flex:none;width:28px;text-align:center}
+@media (max-width:860px){.house .grid{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{background:#EEF5F2}
+.score{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.score .big{font-size:clamp(4rem,10vw,7rem);font-weight:800;line-height:.8;letter-spacing:-.05em;font-variation-settings:"opsz" 96,"wdth" 75}
+.score .stars{color:var(--yolk);font-size:1.6rem;letter-spacing:2px;-webkit-text-stroke:1px #c8921a}
+.score .count{color:var(--muted)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.quote{margin:0;background:var(--paper);border-radius:4px 22px 22px 22px;padding:28px;position:relative}
+.quote blockquote{margin:0 0 18px;font-size:1.15rem;line-height:1.45}
+.quote figcaption{font-weight:600;font-size:.95rem;color:var(--muted)}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}}
+
+/* visit */
+.visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+.addr{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin:0 0 8px}
+.cross{color:var(--muted);margin:0 0 28px}
+.hours{width:100%;border-collapse:collapse;font-size:1.05rem}
+.hours th,.hours td{text-align:left;padding:13px 0;border-bottom:1px solid var(--line);font-weight:500}
+.hours td{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.today th,.hours tr.today td{font-weight:800}
+.hours tr.today th::after{content:"today";font-family:var(--hand);font-weight:400;color:var(--teal);margin-left:10px;font-size:1.1rem}
+.hours tr.closed td{color:var(--muted)}
+.map-card{display:block;text-decoration:none;border:2px solid var(--ink);border-radius:18px;padding:28px;background:
+  linear-gradient(90deg,transparent 47%,#e4e0d3 47% 53%,transparent 53%),
+  linear-gradient(0deg,transparent 44%,#e4e0d3 44% 50%,transparent 50%),
+  linear-gradient(35deg,transparent 60%,#d6e8e2 60% 64%,transparent 64%),var(--paper);
+  min-height:260px;position:relative}
+.pin{position:absolute;left:50%;top:47%;transform:translate(-50%,-100%);background:var(--ink);color:var(--paper);font-weight:700;padding:8px 14px;border-radius:999px;font-size:.95rem;white-space:nowrap}
+.pin::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--ink);border-bottom:0}
+.map-card .go{position:absolute;bottom:20px;left:24px;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--yolk);text-decoration-thickness:3px}
+.map-card:hover .pin{background:var(--teal)}
+.contact{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:860px){.visit .grid{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:#c9cede;padding:40px 0;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer strong{color:var(--paper)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Coffee House <span>Too</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#upstairs">Dine upstairs</a>
+      <a href="#visit">Hours & directions</a>
+    </nav>
+    <div class="status" id="status" aria-live="polite"><span class="dot"></span><span class="txt">Checking hours</span></div>
+    <a class="call" href="tel:+12673245888">Call</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">Breakfast that fixes things.<span class="l2">Since 2011.</span></h1>
+      <p class="lede">Fishtown's corner cafe at York &amp; Belgrade. Hangover hoagies, fried-egg sandwiches and good espresso downstairs, plus a tiny dining room upstairs for brunch.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#menu">See the menu</a>
+        <a class="btn ghost" href="#visit">Get directions</a>
+      </div>
+      <div class="est">2514 E York St, Philadelphia</div>
+    </div>
+
+    <div class="hoagie" role="img" aria-label="Illustration of the Hangover Hoagie: long roll, garlic butter, three eggs, cheddar, hash browns, bacon and lettuce">
+      <div class="layer roll-top" style="--i:7"><span class="tag">Long roll</span></div>
+      <div class="layer lettuce"  style="--i:6"></div>
+      <div class="layer bacon"    style="--i:5"><span class="tag">Breakfast meat</span></div>
+      <div class="layer hash"     style="--i:4"><span class="tag">Hash browns</span></div>
+      <div class="layer cheddar"  style="--i:3"><span class="tag">Cheddar</span></div>
+      <div class="layer eggs"     style="--i:2"><span class="tag">Three eggs</span></div>
+      <div class="layer butter"   style="--i:1"></div>
+      <div class="layer roll-bot" style="--i:0"><span class="tag">Garlic butter</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu" aria-labelledby="menu-title">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <h2 id="menu-title">The menu</h2>
+        <p class="intro">Breakfast all day, lunch from the griddle, and a specials board that changes daily.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Menu sections">
+        <button role="tab" id="t-hoagies" aria-controls="p-hoagies" aria-selected="true">Hangover hoagies</button>
+        <button role="tab" id="t-eggs" aria-controls="p-eggs" aria-selected="false" tabindex="-1">Egg sandwiches</button>
+        <button role="tab" id="t-lunch" aria-controls="p-lunch" aria-selected="false" tabindex="-1">Lunch</button>
+        <button role="tab" id="t-drinks" aria-controls="p-drinks" aria-selected="false" tabindex="-1">Coffee &amp; drinks</button>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-hoagies" aria-labelledby="t-hoagies">
+      <div class="item"><h3>The Hangover Hoagie <span class="flag">the one</span></h3><p>Three eggs, garlic butter, cheddar and pepper-and-onion hash browns on a long roll, with your choice of breakfast meat.</p></div>
+      <div class="item"><h3>Cheesesteak Hangover</h3><p>Shaved sirloin, three eggs, cheddar, hash browns, lettuce, tomato and onion on a long roll.</p></div>
+      <div class="item"><h3>Veggie Hangover <span class="flag">can be vegan</span></h3><p>Three eggs, garlic butter, cheddar, hash browns, roasted red peppers and spinach. Ask for tofu instead of egg.</p></div>
+      <div class="item"><h3>Fajita Hangover</h3><p>Chicken or shaved sirloin with eggs, cheddar, hash browns and salsa on a garlic-buttered roll.</p></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-eggs" aria-labelledby="t-eggs" hidden>
+      <div class="item"><h3>Fried egg sandwich</h3><p>One, two or three eggs with cheddar on a bagel, bread, kaiser, English muffin or croissant. Swap in egg whites on anything.</p></div>
+      <div class="item"><h3>Sausage, egg &amp; cheese croissant</h3><p>A buttery croissant doing exactly what you need it to.</p></div>
+      <div class="item"><h3>Breakfast BLT</h3><p>Bacon, lettuce and tomato with a fried egg on your choice of toast.</p></div>
+      <div class="item"><h3>Pick your meat</h3><p>Pork roll, pork sausage, bacon, turkey bacon, ham, or hot or sweet Italian sausage.</p></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-lunch" aria-labelledby="t-lunch" hidden>
+      <div class="item"><h3>Philly cheesesteak</h3><p>Shaved sirloin on a long roll, the way the neighborhood likes it.</p></div>
+      <div class="item"><h3>Turkey club</h3><p>Stacked high on toast. A regular favorite.</p></div>
+      <div class="item"><h3>Classic BLT</h3><p>Bacon, lettuce and tomato on toast with regular, chipotle or tarragon mayo.</p></div>
+      <div class="item"><h3>Coffee House burger</h3><p>With hand-cut steak fries seasoned with sea salt and cracked pepper.</p></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-drinks" aria-labelledby="t-drinks" hidden>
+      <div class="item"><h3>Espresso bar</h3><p>Lattes, cappuccinos and americanos, hot or iced, with non-dairy milks.</p></div>
+      <div class="item"><h3>Drip coffee</h3><p>Bottomless when you're sitting upstairs.</p></div>
+      <div class="item"><h3>Fresh-squeezed OJ</h3><p>Squeezed to order. Great on its own, better in a mimosa.</p></div>
+      <div class="item"><h3>Smoothies</h3><p>Blended fruit smoothies for the morning after.</p></div>
+    </div>
+
+    <p class="menu-note">Prices and daily specials are on the board in store. Call (267) 324-5888 to order ahead.</p>
+  </div>
+</section>
+
+<section class="house" id="upstairs" aria-labelledby="house-title">
+  <div class="wrap grid">
+    <div>
+      <h2 id="house-title">Grab and go, or head upstairs.</h2>
+      <p class="intro">The counter downstairs is built for speed. Upstairs is a small, quirky dining room for a slower brunch, a coffee meeting, or recovering with friends.</p>
+      <ul class="notes">
+        <li><span class="ico" aria-hidden="true">🐕</span><span>Dogs are welcome. Bring them by for a hello.</span></li>
+        <li><span class="ico" aria-hidden="true">🌱</span><span>Vegetarian? Most things can be made veggie or vegan. Just ask.</span></li>
+        <li><span class="ico" aria-hidden="true">🏳️‍🌈</span><span>LGBTQ+ friendly, always.</span></li>
+        <li><span class="ico" aria-hidden="true">⏰</span><span>Upstairs fills up fast on weekends. Come early to skip the wait.</span></li>
+      </ul>
+    </div>
+    <div class="floors">
+      <div class="floor"><span class="lvl">2</span><h3>Upstairs dining room</h3><p>Sit-down breakfast and brunch, table service, a handful of tables.</p></div>
+      <div class="floor"><span class="lvl">1</span><h3>Coffee counter</h3><p>Espresso, sandwiches and takeout orders, fast.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="rev-title">
+  <div class="wrap">
+    <h2 id="rev-title">What the neighborhood says</h2>
+    <div class="score">
+      <span class="big">4.7</span>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span class="count">from 488 Google reviews</span>
+    </div>
+    <div class="quotes">
+      <figure class="quote"><blockquote>“A gem in an adorable neighborhood. My omelet was perfection.”</blockquote><figcaption>Beth D.</figcaption></figure>
+      <figure class="quote"><blockquote>“Very friendly and informative. The breakfast BLT was real good.”</blockquote><figcaption>Joseph M.</figcaption></figure>
+      <figure class="quote"><blockquote>“The music and vibe is always on point. A staple in Fishtown for me.”</blockquote><figcaption>Bronson O.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-title">
+  <div class="wrap grid">
+    <div>
+      <h2 id="visit-title">Come by</h2>
+      <p class="addr">2514 E York St<br>Philadelphia, PA 19125</p>
+      <p class="cross">Corner of York &amp; Belgrade in Fishtown</p>
+      <table class="hours" id="hours">
+        <caption class="sr-only" style="position:absolute;left:-9999px">Opening hours</caption>
+        <tbody>
+          <tr data-d="2"><th scope="row">Tuesday</th><td>7 am – 3 pm</td></tr>
+          <tr data-d="3"><th scope="row">Wednesday</th><td>7 am – 3 pm</td></tr>
+          <tr data-d="4"><th scope="row">Thursday</th><td>7 am – 3 pm</td></tr>
+          <tr data-d="5"><th scope="row">Friday</th><td>7 am – 3 pm</td></tr>
+          <tr data-d="6"><th scope="row">Saturday</th><td>8 am – 3 pm</td></tr>
+          <tr data-d="0"><th scope="row">Sunday</th><td>8 am – 3 pm</td></tr>
+          <tr data-d="1" class="closed"><th scope="row">Monday</th><td>Closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <a class="map-card" href="https://maps.app.goo.gl/bWChJej7paUN4yPa8" target="_blank" rel="noopener">
+        <span class="pin">Coffee House Too</span>
+        <span class="go">Open in Google Maps</span>
+      </a>
+      <div class="contact">
+        <a class="btn primary" href="tel:+12673245888">Call (267) 324-5888</a>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=2514+E+York+St+Philadelphia+PA+19125" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><strong>Coffee House Too</strong> · Fishtown, Philadelphia</span>
+    <span>Breakfast, lunch &amp; coffee since 2011</span>
+  </div>
+</footer>
+
+<script>
+/* Live open/closed status in Philadelphia time */
+(function(){
+  var hours={0:[8,15],1:null,2:[7,15],3:[7,15],4:[7,15],5:[7,15],6:[8,15]};
+  var names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  function fmt(h){return (h%12||12)+(h<12?" am":" pm")}
+  var parts=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date());
+  var wd=names.indexOf(parts.find(function(p){return p.type==="weekday"}).value);
+  var h=+parts.find(function(p){return p.type==="hour"}).value%24;
+  var m=+parts.find(function(p){return p.type==="minute"}).value;
+  var now=h+m/60, today=hours[wd], el=document.getElementById("status"), txt;
+  if(today && now>=today[0] && now<today[1]){
+    el.classList.add("open"); txt='Open <span class="txt-long">now, until '+fmt(today[1])+'</span>';
+  } else {
+    var d=wd, add=0;
+    if(today && now<today[0]){ txt='Opens <span class="txt-long">today at</span> '+fmt(today[0]); }
+    else{
+      do{d=(d+1)%7;add++}while(!hours[d]);
+      txt='Closed <span class="txt-long">· opens '+(add===1?"tomorrow":names[d])+' '+fmt(hours[d][0])+'</span>';
+    }
+  }
+  el.querySelector(".txt").innerHTML=txt;
+  var row=document.querySelector('#hours tr[data-d="'+wd+'"]'); if(row) row.classList.add("today");
+})();
+
+/* Accessible menu tabs */
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t; x.setAttribute("aria-selected",on); x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute("aria-controls")).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){select(t)});
+    t.addEventListener("keydown",function(e){
+      var n=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;
+      if(n){e.preventDefault();var nx=tabs[(i+n+tabs.length)%tabs.length];select(nx);nx.focus();}
+    });
+  });
+})();
+</script>
+</body>
+</html>
